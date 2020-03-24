@@ -3,7 +3,7 @@ package com.example.cryptographie;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class item0 extends AppCompatActivity {
+public class Atbash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

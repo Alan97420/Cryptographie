@@ -1,5 +1,6 @@
 package com.example.cryptographie;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,9 +36,39 @@ public class MainActivity extends AppCompatActivity {
 
         // Now we will creat action Click for each item
 
-        listView.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+                    Intent intent = new Intent(MainActivity.this, Atbash.class);
+                    startActivity(intent);
+
+                }
+                if(position==1){
+
+                }
+                if(position==2){
+
+                }
+                if(position==3){
+
+                }
+                if(position==4){
+
+                }
+                if(position==5){
+
+                }
+                if(position==6){
+
+                }
+                if(position==7){
+
+                }
+                if(position==8){
+
+                }
+
 
             }
         });
