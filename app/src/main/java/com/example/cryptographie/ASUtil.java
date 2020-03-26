@@ -22,7 +22,7 @@ public  class ASUtil {
 
     public static char getAscii(int code) {
         if (code >= 0x80 && code <= 0xFF) {
-            return EXTENDED[code - 0x7F];
+            return EXTENDED[code - 0x80];
         }
         return (char) code;
     }
@@ -31,7 +31,15 @@ public  class ASUtil {
         int code = (int) c;
 
         if (code >= 0x80 && code <= 0xFF) {
-            return EXTENDED[code - 0x7F];
+            int i = 0;
+            for (i = 0; i < EXTENDED.length; i++) {
+                if(EXTENDED[i] == code) {
+                    break;
+                }
+            }
+
+
+            return ((i+128)%256);
         }
 
         return code;
