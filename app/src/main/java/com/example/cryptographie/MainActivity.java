@@ -41,14 +41,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
-                    Intent intent = new Intent(MainActivity.this, Atbash.class);
-                    startActivity(intent);
 
                 }
                 if(position==1){
-
+                    Intent intent = new Intent(MainActivity.this, Cesar.class);
+                    startActivity(intent);
                 }
                 if(position==2){
+                    Intent intent = new Intent(MainActivity.this, Vigenere.class);
+                    startActivity(intent);
 
                 }
                 if(position==3){
