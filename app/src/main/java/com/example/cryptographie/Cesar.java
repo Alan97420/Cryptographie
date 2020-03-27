@@ -7,12 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Atbash extends AppCompatActivity {
+public class Cesar extends AppCompatActivity {
     private EditText textEditCrypter,textEditDecrypter;
-    private TextView cryptage, popo1;
-    private Button bntCrypter;
-    private Button btnDecypter;
-    private Button btnRetour;
+    private TextView cryptage, decryptage;
+    private Button bntCrypter,btnDecrypter,btnRetour;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +20,14 @@ public class Atbash extends AppCompatActivity {
 
         textEditCrypter = findViewById(R.id.editText_Crypter);
         textEditDecrypter = findViewById(R.id.editText_NCrypter);
+
         bntCrypter = findViewById(R.id.Btn_crypter);
+        btnDecrypter = findViewById(R.id.Btn_decrypter);
+        btnRetour = findViewById(R.id.Btn_retour);
+
         cryptage = findViewById(R.id.resulta);
-        popo1 = findViewById(R.id.popo);
+        decryptage = findViewById(R.id.txt_decryptage);
+
         bntCrypter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,10 +39,32 @@ public class Atbash extends AppCompatActivity {
                     resulat+=ASUtil.getAscii(entier);
 
                 }
-                cryptage.setText(resulat);
+                cryptage.setText("Message Crypté: "+resulat);
 
             }
         });
+
+        btnDecrypter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mot_decrypt = textEditDecrypter.getText().toString();
+                String resulta1 ="";
+                int entier;
+                for(int i=0;i<mot_decrypt.length();i++){
+                    entier = (ASUtil.getCode(mot_decrypt.charAt(i)))-3;
+                    resulta1 += ASUtil.getAscii(entier);
+                }
+                decryptage.setText("Message Décrypté: "+resulta1);
+            }
+        });
+        btnRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+
+            }
+        });
+
     }
 
 }
