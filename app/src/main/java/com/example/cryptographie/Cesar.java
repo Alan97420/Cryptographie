@@ -27,6 +27,7 @@ public class Cesar extends AppCompatActivity {
 
         cryptage = findViewById(R.id.resulta);
         decryptage = findViewById(R.id.txt_decryptage);
+        // charatere non affichable 0-31,127,25. a coder
 
         bntCrypter.setOnClickListener(new View.OnClickListener() {
             @Override

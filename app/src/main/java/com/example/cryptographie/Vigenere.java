@@ -42,7 +42,12 @@ public class Vigenere extends AppCompatActivity {
                     int entier = (ASUtil.getCode(mot.charAt(i)));
                     int entier2 = (ASUtil.getCode(cle.charAt(i)));
                     int entier_resul = (entier+entier2)%256;
-                    resultat +=ASUtil.getAscii(entier_resul);
+                    if(entier_resul>=0&&entier_resul<=31||entier_resul==127||entier_resul==255){
+                        resultat+= String.format("\\x%2x",entier_resul);
+                        //resultat+=Integer.toHexString(entier_resul);
+                    }else{
+                        resultat +=ASUtil.getAscii(entier_resul);
+                    }
                 }
                 cryptage.setText("Message Crypté: "+resultat);
 
