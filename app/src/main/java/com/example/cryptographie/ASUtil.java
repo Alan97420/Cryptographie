@@ -30,7 +30,7 @@ public  class ASUtil {
     public static int getCode(char c) {
         int code = (int) c;
 
-        if (code >= 0x80 && code <= 0xFF) {
+        if (code >= 0x80) {
             int i = 0;
             for (i = 0; i < EXTENDED.length; i++) {
                 if(EXTENDED[i] == code) {
