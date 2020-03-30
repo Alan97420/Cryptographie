@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".DES">
+
+    <EditText
+        android:id="@+id/editText_Crypter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Texte en claire" />
+
+    <EditText
+        android:id="@+id/editText_NCrypter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Text Crypté" />
+
+    <EditText
+        android:id="@+id/editText_Cle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Clé"
+        tools:ignore="DuplicateIds" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/Btn_crypter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CRYPTER" />
+        <Button
+            android:id="@+id/Btn_decrypter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DECRYPTER"/>
+
+        <Button
+            android:id="@+id/Btn_retour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RETOUR" />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
