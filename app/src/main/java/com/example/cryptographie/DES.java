@@ -69,12 +69,12 @@ public class DES extends AppCompatActivity {
             entier_cle+=zero+lon_mot;
         }
         if(entier_cle.length()<64){
-            for (int j = 64-entier_cle.length();j<entier_cle.length();j++){
+            for (int j = entier_cle.length();j<64;j++){
                 entier_cle+= "0";
             }
         }
 
-        Log.v("coucou",entier_cle);
+        Log.v("coucou",Integer.toString(entier_cle.length()));
         return entier_cle;
     }
     public String permute( String entier, byte[]tab){
@@ -82,6 +82,8 @@ public class DES extends AppCompatActivity {
         for (int i=0;i<tab.length;i++){
             resul+=entier.charAt(tab[i]);
         }
+        Log.v("coucou",resul);
+        Log.v("coucou",Integer.toString(resul.length()));
         return resul;
     }
 
