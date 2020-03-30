@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 public class Cesar extends AppCompatActivity {
     private EditText textEditCrypter,textEditDecrypter;
-    private TextView cryptage, decryptage;
     private Button bntCrypter,btnDecrypter,btnRetour;
 
 
@@ -25,8 +24,6 @@ public class Cesar extends AppCompatActivity {
         btnDecrypter = findViewById(R.id.Btn_decrypter);
         btnRetour = findViewById(R.id.Btn_retour);
 
-        cryptage = findViewById(R.id.resulta);
-        decryptage = findViewById(R.id.txt_decryptage);
         // charatere non affichable 0-31,127,25. a coder
 
         bntCrypter.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +39,7 @@ public class Cesar extends AppCompatActivity {
                     }else{
                         resultat +=ASUtil.getAscii(entier);
                     }
-                    cryptage.setText("Message Crypté: "+resultat);
+                    textEditDecrypter.setText(resultat);
                 }
 
 
@@ -69,7 +66,7 @@ public class Cesar extends AppCompatActivity {
                     }
 
                 }
-                decryptage.setText("Message Décrypté: "+resulta1);
+                textEditCrypter.setText(resulta1);
             }
         });
         btnRetour.setOnClickListener(new View.OnClickListener() {

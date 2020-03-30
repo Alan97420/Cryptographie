@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 public class Vigenere extends AppCompatActivity {
     private EditText textEditCrypter,textEditDecrypter, cle;
-    private TextView cryptage, decryptage, tble, tble2, modifie;
     private Button bntCrypter,btnDecrypter,btnRetour;
 
     @Override
@@ -20,16 +19,13 @@ public class Vigenere extends AppCompatActivity {
         textEditCrypter = findViewById(R.id.editText_Crypter);
         textEditDecrypter = findViewById(R.id.editText_NCrypter);
         cle = findViewById(R.id.editText_Cle);
-        tble = findViewById(R.id.txt_table);
-        tble2 = findViewById(R.id.txt_table2);
-        modifie = findViewById(R.id.txt_modifie);
+
 
         bntCrypter = findViewById(R.id.Btn_crypter);
         btnDecrypter = findViewById(R.id.Btn_decrypter);
         btnRetour = findViewById(R.id.Btn_retour);
 
-        cryptage = findViewById(R.id.resulta);
-        decryptage = findViewById(R.id.txt_decryptage);
+
 
         bntCrypter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +53,7 @@ public class Vigenere extends AppCompatActivity {
 
                 }
 
-                cryptage.setText("Message Crypté: "+resultat);
+                textEditDecrypter.setText(resultat);
 
             }
         });
@@ -93,8 +89,6 @@ public class Vigenere extends AppCompatActivity {
                     for(int i=0;i<mot_modifier.length();i++){
                         int entier = (ASUtil.getCode(mot_modifier.charAt(i)));
                         int entier2 = (ASUtil.getCode(cle.charAt(i)));
-                        tble.setText(Integer.toString(entier));
-                        tble2.setText(Integer.toString(entier2));
                         int entier_resul = (entier-entier2)%256;
                         if(entier_resul>=0&&entier_resul<=31||entier_resul==127||entier_resul==255){
                             resultat+= String.format("\\x%02x",entier_resul);
@@ -106,13 +100,19 @@ public class Vigenere extends AppCompatActivity {
 
                 }
 
-                decryptage.setText("Message Crypté: "+resultat);
-                modifie.setText(mot_modifier);
+                textEditCrypter.setText(resultat);
+
 
             }
 
 
 
+        });
+        btnRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
 
     }
