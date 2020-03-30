@@ -21,15 +21,11 @@ public class MainActivity extends AppCompatActivity {
         listView =(ListView)findViewById(R.id.list_crypto);
 
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Atbash");
         arrayList.add("César");
         arrayList.add("Vigenère");
-        arrayList.add("Homophone");
-        arrayList.add("Playfair");
         arrayList.add("Hill");
         arrayList.add("Transposition Rectangulaire");
         arrayList.add("DES");
-        arrayList.add("Suprise");
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
@@ -42,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
 
+
                 }
                 if(position==1){
                     Intent intent = new Intent(MainActivity.this, Cesar.class);
+
                     startActivity(intent);
 
                 }
@@ -52,13 +50,17 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, Vigenere.class);
                     startActivity(intent);
 
+
                 }
                 if(position==3){
 
                 }
                 if(position==4){
+                    Intent intent = new Intent(MainActivity.this, DES.class);
+                    startActivity(intent);
 
                 }
+
                 if(position==5){
 
                 }

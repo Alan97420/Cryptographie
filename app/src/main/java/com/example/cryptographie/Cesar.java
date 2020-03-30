@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 public class Cesar extends AppCompatActivity {
     private EditText textEditCrypter,textEditDecrypter;
+
+    private TextView cryptage, decryptage;
+
     private Button bntCrypter,btnDecrypter,btnRetour;
 
 
@@ -24,12 +27,18 @@ public class Cesar extends AppCompatActivity {
         btnDecrypter = findViewById(R.id.Btn_decrypter);
         btnRetour = findViewById(R.id.Btn_retour);
 
+
+        cryptage = findViewById(R.id.resulta);
+        decryptage = findViewById(R.id.txt_decryptage);
+
         // charatere non affichable 0-31,127,25. a coder
+
 
         bntCrypter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mot = textEditCrypter.getText().toString();
+
                 String resultat = "";
                 for(int i=0; i<mot.length();i++){
                     int entier = (ASUtil.getCode(mot.charAt(i)))+3;
@@ -43,6 +52,7 @@ public class Cesar extends AppCompatActivity {
                 }
 
 
+
             }
         });
 
@@ -51,6 +61,7 @@ public class Cesar extends AppCompatActivity {
             public void onClick(View v) {
                 String mot_decrypt = textEditDecrypter.getText().toString();
                 String resulta1 ="";
+
                 for(int i=0;i<mot_decrypt.length();i++){
                     int entier = (ASUtil.getCode(mot_decrypt.charAt(i)));
                     if(entier==92 && ASUtil.getCode(mot_decrypt.charAt(i+1))==120){
@@ -67,6 +78,7 @@ public class Cesar extends AppCompatActivity {
 
                 }
                 textEditCrypter.setText(resulta1);
+
             }
         });
         btnRetour.setOnClickListener(new View.OnClickListener() {
@@ -80,3 +92,4 @@ public class Cesar extends AppCompatActivity {
     }
 
 }
+
