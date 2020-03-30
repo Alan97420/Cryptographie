@@ -37,15 +37,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
-                    Intent intent = new Intent(MainActivity.this, Cesar.class);
-                    startActivity(intent);
+
+
                 }
                 if(position==1){
-                    Intent intent = new Intent(MainActivity.this, Vigenere.class);
+                    Intent intent = new Intent(MainActivity.this, Cesar.class);
+
                     startActivity(intent);
 
                 }
                 if(position==2){
+                    Intent intent = new Intent(MainActivity.this, Vigenere.class);
+                    startActivity(intent);
 
 
                 }
@@ -57,6 +60,21 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 }
+
+                if(position==5){
+
+                }
+                if(position==6){
+                    Intent intent = new Intent(MainActivity.this, TransrectActivity.class);
+                    startActivity(intent);
+                }
+                if(position==7){
+
+                }
+                if(position==8){
+
+                }
+
 
             }
         });

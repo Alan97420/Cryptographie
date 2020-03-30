@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".Cesar">
+    tools:context=".TransrectActivity">
 
     <EditText
         android:id="@+id/editText_Crypter"
@@ -24,7 +23,14 @@
         android:inputType="textPersonName"
         android:hint="Text Crypté" />
 
-
+    <EditText
+        android:id="@+id/editText_Cle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Clé"
+        tools:ignore="DuplicateIds" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -34,12 +40,14 @@
             android:id="@+id/Btn_crypter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CRYPTER" />
+            android:text="CRYPTER"
+            android:onClick="crypt"/>
         <Button
             android:id="@+id/Btn_decrypter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DECRYPTER"/>
+            android:text="DECRYPTER"
+            android:onClick="decrypt"/>
 
         <Button
             android:id="@+id/Btn_retour"
@@ -49,6 +57,20 @@
 
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/resulta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/popo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:ignore="DuplicateIds" />
 
 </LinearLayout>
