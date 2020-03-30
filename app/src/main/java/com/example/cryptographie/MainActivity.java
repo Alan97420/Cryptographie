@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 if(position==6){
-                    Intent intent = new Intent(MainActivity.this, TransrectActivity.class);
-                    startActivity(intent);
+
                 }
                 if(position==7){
 
