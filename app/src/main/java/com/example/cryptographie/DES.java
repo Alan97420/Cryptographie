@@ -30,21 +30,31 @@ public class DES extends AppCompatActivity {
         bntCrypter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String cle_long = cle.getText().toString();
-                String Crypt = textEditCrypter.getText().toString();
-                String T_origine = permute(transfo(Crypt),Des_table.IP);
-                //Log.v("coucou",T_origine);
-                //String test ="1100110000000000110011001111111111110000101010101111000010101010";
+                String cle_long = cle.getText().toString();// je recupere le text clé
+                String Crypt = textEditCrypter.getText().toString(); // je recupere le text clair
+                String T_origine = permute(transfo(Crypt),Des_table.IP); // je verifie si c'est en hexa avec tansfo ensuite je permute avec la table IP
                 if(!cle_long.isEmpty()){
-                    String K_origne = permute(transfo(cle_long),Des_table.PC1);
+                    String K_origne = permute(transfo(cle_long),Des_table.PC1);// je verifie si c'est en hexa avec tansfo ensuite je permute avec la table PC1 pour la clé
                     String[] cle_fini = decalage(K_origne.substring(0,28),K_origne.substring(28,56),Des_table.rotations);
                     String hug = encodage(T_origine,cle_fini);
                     String popo = permute(hug,Des_table.FP);
                     Log.v("coucou",popo);
-                    //String popi = Integer.toString(Integer.parseInt(popo,2),16);
-                    //textEditDecrypter.setText(popi);
+                    textEditDecrypter.setText(transfoHex(popo));
+
+                    //String hex = tranfoHex(popo);
+                    //textEditDecrypter.setText(hex);
                 }
 
+
+
+            }
+        });
+        btnDecrypter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String cle_long = cle.getText().toString();// je recupere le text clé
+                String deCrytp = textEditDecrypter.getText().toString();
+                String T_origine = permute(transfo(deCrytp),Des_table.FP); // je verifie si c'est en hexa avec tansfo ensuite je permute avec la table IP
 
 
             }
@@ -126,12 +136,27 @@ public class DES extends AppCompatActivity {
         String[][]tab = new String[17][2];
         tab[0][0] = L0;
         tab[0][1] = R0;
+        Log.v("coucou",L0+"= "+"0x"+transfoHex(L0));
+        Log.v("coucou",R0+"= "+"0x"+transfoHex(R0));
+        Log.v("coucou", "--------------------");
+        int vis = 1;
 
         for(int i=0;i<16;i++){
             tab[i+1][0] = tab[i][1];
             String r_bit = permute(tab[i][1],Des_table.E);
             String A = XOR(r_bit,cle[i]);
-            tab[i+1][1] = XOR(tab[i][0],sBlock(A));
+            Log.v("coucou", "Iteration "+vis);
+            vis+=1;
+            Log.v("coucou", "K = "+cle[i]);
+            Log.v("coucou", "E(R) = "+r_bit);
+            Log.v("coucou", "A= E(R)+K = "+A);
+            String sn = sBlock(A);
+            tab[i+1][1] = XOR(tab[i][0], permute(sn,Des_table.P));
+            Log.v("coucou", "B = "+sn);
+            Log.v("coucou", "P(B) = "+permute(sn,Des_table.P)+" = "+"0x"+transfoHex(permute(sn,Des_table.P)));
+            Log.v("coucou", "L1 = "+tab[i+1][0]+" = "+"0x"+transfoHex(tab[i+1][0]));
+            Log.v("coucou", "L2 = "+tab[i+1][1]+" = "+"0x"+transfoHex(tab[i+1][1]));
+            Log.v("coucou", "--------------------");
         }
         return tab[16][1]+tab[16][0];
     }
@@ -146,6 +171,7 @@ public class DES extends AppCompatActivity {
         byte[][][] s_tab = Des_table.S;
         String resultat = "";
         int rang=0;
+        int vis = 1;
         for(int i=0;i< mot.length();i+=6){
             String bit2 =""+mot.charAt(i)+mot.charAt(i+5);
             String bit4 =""+mot.charAt(i+1)+ mot.charAt(i+2)+mot.charAt(i+3)+mot.charAt(i+4);
@@ -160,13 +186,26 @@ public class DES extends AppCompatActivity {
             }
             resultat+=zero+inter;
             rang++;
+            Log.v("coucou","S"+vis+" = "+zero+inter);
+            vis++;
+
 
 
 
         }
 
-        return (permute(resultat,Des_table.P));
+        return resultat;
     }
+    public String transfoHex(String binaire){
+        String result="";
+        for ( int i = 0;i<binaire.length();i+=4) {
+            String popo = binaire.substring(i, i+4);
+            int pipi = Integer.parseInt(popo, 2);
+            result += Integer.toHexString(pipi);
+        }
+        return result;
+    }
+
 
 
 
