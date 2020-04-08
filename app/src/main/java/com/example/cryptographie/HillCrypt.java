@@ -46,9 +46,9 @@ public class HillCrypt {
         message = new int[lmsg];
         for(int i = 0; i< lmsg; i++) {
             if(i >= text.length()) {
-                message[i] = ASUtil.getAscii('x');
+                message[i] = ASUtil.getCode('x');
             } else {
-                message[i] = ASUtil.getAscii(text.charAt(i));
+                message[i] = ASUtil.getCode(text.charAt(i));
             }
 
         }
@@ -64,9 +64,9 @@ public class HillCrypt {
 
         for (int i = 0; i < (lmsg/2); i++) {
             int t1 = mMessage[0][i] * matriceCle[0][0] + mMessage[1][i]*matriceCle[0][1];
-            textCrypt += ASUtil.getAscii(t1 % 256);
+            textCrypt += ASUtil.getCode((char)(t1 % 256));
             int t2 = mMessage[0][i] * matriceCle[1][0] + mMessage[1][i]*matriceCle[1][1];
-            textCrypt += ASUtil.getAscii(t2 % 256);
+            textCrypt += ASUtil.getCode((char)(t2 % 256));
         }
 
 
@@ -119,9 +119,9 @@ public class HillCrypt {
 
         for (int i = 0; i < lmsg/2; i++) {
             int t1 = mMessage[0][i] * matriceCle[0][0] + mMessage[1][i]*matriceCle[0][1];
-            textDecrypt += (char) ASUtil.getCode((char) (t1 % 256));
+            textDecrypt += (char) ASUtil.getAscii((char) (t1 % 256));
             int t2 = mMessage[0][i] * matriceCle[1][0] + mMessage[1][i]*matriceCle[1][1];
-            textDecrypt += (char) ASUtil.getCode((char) (t2 % 256));
+            textDecrypt += (char) ASUtil.getAscii((char) (t2 % 256));
         }
 
         return  textDecrypt;

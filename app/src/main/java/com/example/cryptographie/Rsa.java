@@ -32,6 +32,8 @@ public class Rsa {
 
     public String crypt(String text){
 
+        long p1 = ASUtil.StringTolong(text);
+
         int size = (int) Math.ceil(text.length()/8);
 
         byte tmp[][] = new byte[size][8];
