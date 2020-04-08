@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class Vigenere extends AppCompatActivity {
     private EditText textEditCrypter,textEditDecrypter, cle;
+
     private Button bntCrypter,btnDecrypter,btnRetour;
 
     @Override
@@ -27,6 +28,7 @@ public class Vigenere extends AppCompatActivity {
 
 
 
+
         bntCrypter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +36,7 @@ public class Vigenere extends AppCompatActivity {
                 String cle_long = cle.getText().toString();
                 String cle="";
                 String resultat="";
+
                 if(!cle_long.isEmpty()){
                     for(int i=0;i<mot.length();i++){
                         cle+=cle_long.charAt(i%cle_long.length());
@@ -112,8 +115,11 @@ public class Vigenere extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+
             }
         });
 
     }
+
 }
+

@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".RsaActivity"
             android:label="@string/title_activity_rsa"
@@ -17,6 +18,9 @@
         <activity android:name=".TransrectActivity" />
         <activity android:name=".Vigenere" />
         <activity android:name=".Cesar" />
+
+        <activity android:name=".DES"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
