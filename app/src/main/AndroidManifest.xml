@@ -9,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".TransrectActivity"></activity>
-        
-        <activity android:name=".Vigenere"></activity>
+        <activity
+            android:name=".RsaActivity"
+            android:label="@string/title_activity_rsa"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".HillActivity" />
+        <activity android:name=".TransrectActivity" />
+        <activity android:name=".Vigenere" />
         <activity android:name=".Cesar" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
