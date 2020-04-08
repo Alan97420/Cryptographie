@@ -75,5 +75,4 @@
         tools:ignore="DuplicateIds"
         android:text="Message Décrypté :"/>
 
-
 </LinearLayout>
