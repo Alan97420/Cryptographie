@@ -45,6 +45,51 @@ public  class ASUtil {
         return code;
     }
 
+    public static int getCode(short c) {
+        int code = (int) c;
+
+        if (code >= 0x80) {
+            int i = 0;
+            for (i = 0; i < EXTENDED.length; i++) {
+                if(EXTENDED[i] == code) {
+                    break;
+                }
+            }
+
+
+            return ((i+128)%256);
+        }
+
+        return code;
+    }
+
+    public static String StringToHexString(String m) {
+        String hex = "";
+        String tmp = "";
+        for (int i = 0; i < m.length(); i++) {
+            tmp = Integer.toBinaryString(getCode(m.charAt(i)));
+            if(tmp.length()<2) {
+                tmp = 0+tmp;
+            }
+            hex += tmp;
+        }
+
+
+        return hex;
+    }
+
+    public static String HexStringToString(String m) {
+        String str = "";
+        char tmp ;
+
+        for (int i = 0; i < m.length(); i+=2) {
+            tmp = getAscii(Integer.parseInt(m.substring(i,i+2),16));
+            str += tmp;
+        }
+
+        return str;
+    }
+
     public static String CharToString(char[] m) {
         String text = "";
 

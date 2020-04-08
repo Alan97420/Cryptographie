@@ -36,15 +36,15 @@ public class Rsa {
 
         int size = (int) Math.ceil(text.length()/8);
 
-        byte tmp[][] = new byte[size][8];
+        String tmp[] = new String[size];
         int k =0;
         for (int i = 0; i < size; i++) {
 
             for (int j = 0; j < 8; j++) {
                 if(k < text.length()){
-                    tmp[k][j] = (byte) ASUtil.getCode(text.charAt(k));
+                    tmp[j] +=  text.charAt(k);
                 } else {
-                    tmp[k][j] = (byte) ASUtil.getCode(' ');
+                    tmp[j] +=  ' ';
                 }
                 k++;
             }
@@ -52,32 +52,38 @@ public class Rsa {
         }
 
 
-        String message[] = new String[size];
+        String message = "";
         String mfinal = "";
 
-        for (int i =0; i< size*8;i++){
-            BigInteger tm = new BigInteger(tmp[i]);
-            long m = tm.longValue();
+        for (int i =0; i< size;i++){
+
+            long m = ASUtil.StringTolong(tmp[i]);
             m =  (long) (Math.pow(m, key[0]) % key[1]);
-            message[i] = new String(BigInteger.valueOf(m).toByteArray());
-            mfinal += message[i];
+            message = Long.toHexString(m);
+            if(message.length()<4) {
+                for (int j = 0; j < message.length()%5; j++) {
+                    message = '0' + message;
+                }
+            }
+
+            mfinal += message;
         }
 
         return mfinal;
     }
 
     public String decrypt(String text){
-
-        byte message[] = text.getBytes();
-        BigInteger m = new BigInteger(message).modPow(BigInteger.valueOf(key[0]),BigInteger.valueOf(key[1]));
-        message = m.toByteArray();
-
-        String fmessage = "";
-        for (int i = 0; i < message.length; i++) {
-            fmessage += ASUtil.getAscii(message[i]);
+        long m =0;
+        String mess = "";
+        for (int i = 0; i < text.length(); i+=4) {
+            m = Integer.parseInt(text.substring(i,i+5),16);
+            m = (long) Math.pow((double)m,key[0]) % key[1];
+            mess += ASUtil.LongToString(m);
         }
 
-        return fmessage;
+
+
+        return mess;
     }
 
 

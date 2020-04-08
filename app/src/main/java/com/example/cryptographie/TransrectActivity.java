@@ -31,13 +31,13 @@ public class TransrectActivity extends AppCompatActivity {
         String mot = textEditCrypter.getText().toString();
         String cle = editCle.getText().toString();
         RectTrans crypt = new RectTrans(cle);
-        cryptage.setText(crypt.crypt(mot));
+        textEditDecrypter.setText(crypt.crypt(mot));
     }
 
     public void decrypt(View v) {
         String mot = textEditDecrypter.getText().toString();
         String cle = editCle.getText().toString();
         RectTrans crypt = new RectTrans(cle);
-        cryptage.setText(crypt.decrypt(mot));
+        textEditCrypter.setText(crypt.decrypt(mot));
     }
 }

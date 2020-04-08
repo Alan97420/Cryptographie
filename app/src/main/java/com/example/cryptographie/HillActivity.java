@@ -38,7 +38,7 @@ public class HillActivity extends AppCompatActivity {
         String mot = textEditDecrypter.getText().toString();
         String cle = editCle.getText().toString();
         HillCrypt crypt = new HillCrypt(cle);
-        cryptage.setText(crypt.decrypt(mot));
+        textEditCrypter.setText(crypt.decrypt(mot));
     }
 }
 
