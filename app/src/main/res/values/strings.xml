@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cryptographie</string>
+    <string name="title_activity_rsa">RsaActivity</string>
 </resources>

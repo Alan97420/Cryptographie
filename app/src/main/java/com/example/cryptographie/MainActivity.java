@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(position==5){
-
+                    Intent intent = new Intent(MainActivity.this, HillActivity.class);
+                    startActivity(intent);
                 }
                 if(position==6){
 
