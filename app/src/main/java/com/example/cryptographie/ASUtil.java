@@ -45,6 +45,60 @@ public  class ASUtil {
         return code;
     }
 
+    public static String CharToString(char[] m) {
+        String text = "";
+
+        for (int i = 0; i < m.length; i++) {
+            text += getAscii(m[i]);
+        }
+
+        return text;
+    }
+
+    public static String ShortToString(short[] m) {
+        String text = "";
+
+        for (int i = 0; i < m.length; i++) {
+            text += getAscii(m[i]);
+        }
+
+        return text;
+    }
+
+    public static short[] StringToShort(String m) {
+        short text[] = new short[m.length()];
+
+        for (int i = 0; i < m.length(); i++) {
+            text[i] = (short) getCode(m.charAt(i));
+        }
+
+        return text;
+    }
+
+    public static long StringTolong(String m) {
+        long s = 0;
+        String text = "";
+        for (int i = 0; i < m.length(); i++) {
+            text += "" + getCode(m.charAt(i));
+        }
+        return Long.parseLong(text);
+    }
+
+    public static String LongToString(long n) {
+        String m = Long.toBinaryString(n);
+        int csize = m.length() %9;
+
+        for (int i = 0; i < csize; i++) {
+            m = "0" + m;
+        }
+        String t = "";
+        for(int i = 0; i < m.length();i+=8) {
+            t += getAscii(Integer.parseInt(m.substring(i, i+7)));
+        }
+
+        return t;
+
+    }
 
 
 }

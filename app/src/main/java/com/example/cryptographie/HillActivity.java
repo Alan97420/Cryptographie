@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class TransrectActivity extends AppCompatActivity {
+public class HillActivity extends AppCompatActivity {
 
     private EditText textEditCrypter,textEditDecrypter, editCle;
     private TextView cryptage, popo1;
@@ -18,7 +18,7 @@ public class TransrectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transrect);
+        setContentView(R.layout.activity_hill);
         editCle = findViewById(R.id.editText_Cle);
         textEditCrypter = findViewById(R.id.editText_Crypter);
         textEditDecrypter = findViewById(R.id.editText_NCrypter);
@@ -30,14 +30,15 @@ public class TransrectActivity extends AppCompatActivity {
     public void crypt(View v) {
         String mot = textEditCrypter.getText().toString();
         String cle = editCle.getText().toString();
-        RectTrans crypt = new RectTrans(cle);
-        cryptage.setText(crypt.crypt(mot));
+        HillCrypt crypt = new HillCrypt(cle);
+        textEditDecrypter.setText(crypt.crypt(mot));
     }
 
     public void decrypt(View v) {
         String mot = textEditDecrypter.getText().toString();
         String cle = editCle.getText().toString();
-        RectTrans crypt = new RectTrans(cle);
+        HillCrypt crypt = new HillCrypt(cle);
         cryptage.setText(crypt.decrypt(mot));
     }
 }
+
